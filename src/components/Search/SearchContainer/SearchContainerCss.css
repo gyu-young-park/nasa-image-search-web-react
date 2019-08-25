@@ -1,0 +1,12 @@
+.search-container {
+  background-color: #F2F3F4    ;
+  height: 50px;
+}
+
+.card-info-display{
+  height: 100%;
+  width: 100%;
+  display: inline-grid;
+  align-items: center;
+  justify-content: center;
+}
