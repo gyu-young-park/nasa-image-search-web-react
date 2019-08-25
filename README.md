@@ -1,3 +1,9 @@
+##Nasa Image Search Web
+키워드를 입력하면 키워드에 맞는 이미지들이 검색 됩니다.
+무한스크롤을 지원합니다.
+
+##아래는 create-react-app 사용 방법입니다.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
