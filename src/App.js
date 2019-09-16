@@ -4,18 +4,29 @@ import './App.css';
 import HeaderContainer from "./components/Header/HeaderContainer/HeaderContainer.js";
 import SearchContainer from "./components/Search/SearchContainer/SearchContainer.js";
 
-function App() {
-  return (
-    <div>
+export default class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      filter : "Image"
+    }
+    this.changeFilter = this.changeFilter.bind(this)
+  }
+  changeFilter(value){
+    this.setState({
+      filter : value
+    })
+  }
+  render(){
+    return (
       <div>
-        <HeaderContainer/>
+        <div>
+          <HeaderContainer changeFilter = {this.changeFilter}/>
+        </div>
+        <div>
+          <SearchContainer filter = {this.state.filter}/>
+        </div>
       </div>
-      <div>
-        <SearchContainer/>
-      </div>
-    </div>
-
-  );
+    );
+  }
 }
-
-export default App;

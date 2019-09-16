@@ -5,6 +5,33 @@ import HeaderToggle from '../HeaderToggle/HeaderToggle.js';
 import './HeaderContainerCss.css';
 
 export default class HeaderContainer extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      activeArray : [true,false,false],
+      textArray : ["Image", "Video", "Audio"]
+    }
+    this.handleClick = this.handleClick.bind(this);
+    this.renderHeaderInfo = this.renderHeaderInfo.bind(this);
+  }
+  handleClick(number){
+    let tmp = []
+    for(let i = 0; i < this.state.activeArray.length; i++){
+      if(i === number){
+        tmp.push(true);
+      }else{
+        tmp.push(false);
+      }
+    }
+    this.setState({
+      activeArray : tmp
+    },this.props.changeFilter(this.state.textArray[number]))
+  }
+  renderHeaderInfo(){
+    return this.state.activeArray.map((val, i) => {
+      return (<HeaderInfo HeaderID = {i} text={this.state.textArray[i]} href={"#"} active={val} handleClick = {this.handleClick}/>)
+    })
+  }
   render() {
     return(
       <nav className="navbar navbar-expand-lg navbar-dark">
@@ -12,9 +39,7 @@ export default class HeaderContainer extends React.Component{
         <HeaderToggle/>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <HeaderInfo text={"Image"} href={"https://getbootstrap.com/docs/4.1/components/navbar/"} active={true}/>
-            <HeaderInfo text={"Video"} href={"https://getbootstrap.com/docs/4.1/components/navbar/"} active={false}/>
-            <HeaderInfo text={"Audio"} href={"https://getbootstrap.com/docs/4.1/components/navbar/"} active={false}/>
+            {this.renderHeaderInfo()}
           </div>
         </div>
       </nav>
